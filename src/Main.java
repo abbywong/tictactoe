@@ -23,12 +23,12 @@ public class Main {
             board.showPlayingField();
             // Check if the game is still going
 
-            if (board.hasCircleWon()) {
+            if (board.hasWon(Shape.CIRCLE)) {
                 System.out.println("Circle has won, congratulations!");
                 return;
             }
-            if (board.hasCrossWon()) {
-                System.out.println("Square has won, congratulations!");
+            if (board.hasWon(Shape.CROSS)) {
+                System.out.println("Cross has won, congratulations!");
                 return;
             }
             else if ( ! board.hasEmptySquares()) {

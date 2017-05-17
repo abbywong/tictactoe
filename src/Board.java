@@ -49,67 +49,9 @@ public class Board {
         }
     }
 
-    public boolean hasCircleWon() {
-//        System.out.println(data);
-//        List<Shape> row = this.data.get(0);
-//        System.out.println(row);
-//        Shape value = row.get(0);
-//        System.out.println(value);
-//        this.getSquare();
 
-        // Check \
-        boolean hasLine = true;
-        for (int i = 0; i < this.SIZE; i++) {
-            if (this.getSquare(i, i) != Shape.CIRCLE) {
-                hasLine = false;
-                break;
-            }
-        }
-        if (hasLine) {
-            return true;
-        }
-        // Check /
-        hasLine = true;
-        for (int i = 0; i < this.SIZE; i++) {
-            if (this.getSquare(i, this.SIZE - 1 - i) != Shape.CIRCLE){
-                hasLine = false;
-                break;
-            }
-        }
-        if (hasLine) {
-            return true;
-        }
-        // Check horizontal
-        for (int k = 0; k < this.SIZE; k++) {
-            hasLine = true;
-            for (int i = 0; i < this.SIZE; i++) {
-                if (this.getSquare(k, i) != Shape.CIRCLE) {
-                    hasLine = false;
-                    break;
-                }
-            }
-            if (hasLine) {
-                return true;
-            }
-        }
-        // Check vertical
-        for (int k = 0; k < this.SIZE; k++) {
-            hasLine = true;
-            for (int i = 0; i < this.SIZE; i++) {
-                if (this.getSquare(i, k) != Shape.CIRCLE) {
-                    hasLine = false;
-                    break;
-                }
-            }
-            if (hasLine) {
-                return true;
-            }
-        }
-        return false;
-    }
+    public boolean hasWon(Shape checkShape) {
 
-    public boolean hasCrossWon() {
-        Shape checkShape = Shape.CROSS;
         // Check \
         boolean hasLine = true;
         for (int i = 0; i < this.SIZE; i++) {
