@@ -1,5 +1,3 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.Random;
 
 public class Main {
@@ -11,7 +9,7 @@ public class Main {
         // todo: add a smart computer player
         Player activePlayer;
         // Choose a random starting player
-        if ((new Random()).nextInt(1) == 0) {
+        if ((new Random()).nextInt(2) == 0) {
             System.out.println("Player one can start!");
             activePlayer = firstPlayer;
         } else {
@@ -24,16 +22,17 @@ public class Main {
             System.out.printf("round %d\n", round);
             board.showPlayingField();
             // Check if the game is still going
-            if ( ! board.hasEmptySquares()) {
-                System.out.println("Game over! No winner...");
-                return;
-            }
+
             if (board.hasCircleWon()) {
                 System.out.println("Circle has won, congratulations!");
                 return;
             }
-            if (board.hasSquareWon()) {
+            if (board.hasCrossWon()) {
                 System.out.println("Square has won, congratulations!");
+                return;
+            }
+            else if ( ! board.hasEmptySquares()) {
+                System.out.println("Game over! No winner...");
                 return;
             }
             // Now to let the player make a move
@@ -46,10 +45,11 @@ public class Main {
             // Switch to the other player's turn
             if (activePlayer == firstPlayer) {
                 activePlayer = secondPlayer;
-            } else if (activePlayer == secondPlayer) {
-                activePlayer = firstPlayer;
-            } else {
-                throw new NotImplementedException();
+            }
+            //else if (activePlayer == secondPlayer) {
+            else { activePlayer = firstPlayer;
+                // } else {
+                //   throw new NotImplementedException();
             }
             round++;
         }
